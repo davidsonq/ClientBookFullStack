@@ -17,8 +17,9 @@ const handleError = (
   }
 
   if (err instanceof ZodError) {
-    return res.status(400).json({ message: err.errors });
+    return res.status(400).json(err.flatten().fieldErrors);
   }
+
   if (err instanceof TypeError) {
     return res.status(403).json({ message: "Email or password not found!" });
   }
