@@ -1,41 +1,34 @@
 import "dotenv/config";
 import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
-import path from "path";
+import { Contact } from "./entities/contacts.entity";
+import { User } from "./entities/users.entity";
+import { Initial1679424018227 } from "./migrations/1679424018227-Initial";
 
 const dataSourceConfig = (): DataSourceOptions => {
-  const ententiesPath: string = path.join(__dirname, "./entities/**.{ts,js}");
-  const migrationsPath: string = path.join(
-    __dirname,
-    "./migrations/**.{ts,js}"
-  );
+  const dbUrl: string | undefined = process.env.DATABASE_URL;
 
-  const dUrl: string | undefined = process.env.DATABASE_URL;
+  if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL' ");
 
   const nodeEnv: string | undefined = process.env.NODE_ENV;
-
-  if (!dUrl) {
-    throw new Error("Env var DATABSE_URL no exist");
-  }
 
   if (nodeEnv === "test") {
     return {
       type: "sqlite",
-      database: ":memory",
+      database: ":memory:",
       synchronize: true,
-      entities: [ententiesPath],
+      entities: [User, Contact],
     };
   }
 
   return {
     type: "postgres",
-    url: dUrl,
+    url: dbUrl,
     synchronize: false,
     logging: true,
-    migrations: [migrationsPath],
-    entities: [ententiesPath],
+    entities: [User, Contact],
+    migrations: [Initial1679424018227],
   };
 };
-const AppDataSource = new DataSource(dataSourceConfig());
 
-export default AppDataSource;
+export const AppDataSource = new DataSource(dataSourceConfig());

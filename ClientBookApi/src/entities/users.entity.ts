@@ -11,7 +11,7 @@ import {
   OneToMany,
 } from "typeorm";
 import { hashSync } from "bcryptjs";
-import Contact from "./contacts.entity";
+import { Contact } from "./contacts.entity";
 
 @Entity("users")
 class User {
@@ -78,4 +78,4 @@ class User {
   contacts: Contact[];
 }
 
-export default User;
+export { User };

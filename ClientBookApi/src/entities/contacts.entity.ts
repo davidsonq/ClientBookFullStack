@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from "typeorm";
-import User from "./users.entity";
+import { User } from "./users.entity";
 
 @Entity("contacts")
 class Contact {
@@ -52,4 +52,4 @@ class Contact {
   user: User;
 }
 
-export default Contact;
+export { Contact };
