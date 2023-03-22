@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/users.entity";
-import { responseCreateUserSchemas } from "../../schemas/users/createUsers.schemas";
+import responseCreateUserSchemas from "../../schemas/users/responseUser.schemas";
 
 const listUserProfileService = async (
   userId: string

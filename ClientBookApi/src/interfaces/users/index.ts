@@ -21,3 +21,12 @@ export interface IUser {
   deletedAt: Date;
   usersContacts?: string[];
 }
+
+export interface IUserUpdate {
+  email?: string;
+  secondEmail?: string;
+  phone?: string;
+  secondPhone?: string;
+  password?: string;
+  name?: string;
+}

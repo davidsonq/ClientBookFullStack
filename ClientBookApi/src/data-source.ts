@@ -4,6 +4,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { Contact } from "./entities/contacts.entity";
 import { User } from "./entities/users.entity";
 import { Initial1679424018227 } from "./migrations/1679424018227-Initial";
+import { Second1679494071841 } from "./migrations/1679494071841-Second";
 
 const dataSourceConfig = (): DataSourceOptions => {
   const dbUrl: string | undefined = process.env.DATABASE_URL;
@@ -27,7 +28,7 @@ const dataSourceConfig = (): DataSourceOptions => {
     synchronize: false,
     logging: true,
     entities: [User, Contact],
-    migrations: [Initial1679424018227],
+    migrations: [Initial1679424018227, Second1679494071841],
   };
 };
 
