@@ -19,7 +19,7 @@ const createSessionUserService = async (
     .getOne();
 
   if (!userResponse) {
-    throw new AppError("Email or password not found!", 400);
+    throw new AppError("Email or password not found!", 403);
   }
 
   const passwordSeach = await compare(password, userResponse.password);
@@ -34,7 +34,6 @@ const createSessionUserService = async (
     { email: userResponse.email, isAdm: userResponse.isAdm },
     secretKey,
     {
-      algorithm: "HS256",
       expiresIn: "24h",
       subject: userResponse.id,
     }
