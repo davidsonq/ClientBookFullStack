@@ -6,8 +6,13 @@ import responseCreateUserSchemas from "../../schemas/users/responseUser.schemas"
 
 const updateUserService = async (
   newUpdateUser: IUserUpdate,
-  userId: string
+  userId: string,
+  tokenId: string
 ): Promise<ReturnType<typeof responseCreateUserSchemas.parse>> => {
+  if (userId !== tokenId) {
+    throw new AppError("Invalid access check past id!", 404);
+  }
+
   const userRepository = AppDataSource.getRepository(User);
 
   const userResponse = await userRepository.find({

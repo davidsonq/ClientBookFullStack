@@ -26,6 +26,7 @@ userRoutes.patch(
   "/:id",
   authUserMiddleware,
   verifyZodMiddlewares(updateUserSchemas),
+  verifyUserEmailMiddlewares,
   updateUserController
 );
 

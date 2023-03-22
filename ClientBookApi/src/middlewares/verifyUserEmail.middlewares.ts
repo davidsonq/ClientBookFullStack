@@ -12,21 +12,22 @@ const verifyUserEmailMiddlewares = async (
   const { email, secondEmail } = req.body;
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
+  if (email) {
+    const existsEmail: boolean = await userRepository.exist({
+      where: { email: email },
+    });
 
-  const existsEmail: boolean = await userRepository.exist({
-    where: { email: email },
-  });
+    if (existsEmail) {
+      throw new AppError("Email already created", 409);
+    }
 
-  if (existsEmail) {
-    throw new AppError("Email already created", 409);
-  }
+    const existsEmailInSecondEmail: boolean = await userRepository.exist({
+      where: { secondEmail: email },
+    });
 
-  const existsEmailInSecondEmail: boolean = await userRepository.exist({
-    where: { secondEmail: email },
-  });
-
-  if (existsEmailInSecondEmail) {
-    throw new AppError("Email already created", 409);
+    if (existsEmailInSecondEmail) {
+      throw new AppError("Email already created", 409);
+    }
   }
 
   if (secondEmail) {

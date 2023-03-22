@@ -2,7 +2,13 @@ import AppDataSource from "../../data-source";
 import { User } from "../../entities/users.entity";
 import AppError from "../../errors/appError.errors";
 
-const deleteUserServices = async (id: string): Promise<void> => {
+const deleteUserServices = async (
+  id: string,
+  userId: string
+): Promise<void> => {
+  if (id !== userId) {
+    throw new AppError("Invalid access check past id!", 404);
+  }
   const userRepository = AppDataSource.getRepository(User);
 
   const userResponse = await userRepository.find({

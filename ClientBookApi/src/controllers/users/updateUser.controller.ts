@@ -10,7 +10,9 @@ const updateUserController = async (
 
   const userId: string = req.params.id;
 
-  const data = await updateUserService(updateUser, userId);
+  const tokenId: string = req.authId.sub;
+
+  const data = await updateUserService(updateUser, userId, tokenId);
 
   return res.status(200).json(data);
 };

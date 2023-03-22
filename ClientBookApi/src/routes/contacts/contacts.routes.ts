@@ -1,5 +1,6 @@
 import { Router } from "express";
 import createContactsController from "../../controllers/contacts/createContacts.controller";
+import listContactIdController from "../../controllers/contacts/listContactId.controller";
 import listContactsController from "../../controllers/contacts/listContacts.controller";
 import authUserMiddleware from "../../middlewares/authUser.middilewares";
 import verifyContactEmailMiddlewares from "../../middlewares/verifyContactEmail.middlewares";
@@ -16,7 +17,7 @@ contactRoutes.post(
   createContactsController
 );
 contactRoutes.get("", authUserMiddleware, listContactsController);
-contactRoutes.get("/:id", authUserMiddleware);
+contactRoutes.get("/:id", authUserMiddleware, listContactIdController);
 contactRoutes.patch("/:id", authUserMiddleware);
 contactRoutes.delete("/:id", authUserMiddleware);
 

@@ -9,7 +9,7 @@ import responseContactsSchemas from "../../schemas/contacts/responseContacts.sch
 const createContactsService = async (
   newContact: IContactRequest,
   userId: string
-) => {
+): Promise<ReturnType<typeof responseContactsSchemas.parse>> => {
   const ContactRepository: Repository<Contact> =
     AppDataSource.getRepository(Contact);
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
