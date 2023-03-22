@@ -5,12 +5,12 @@ import responseCreateUserSchemas from "../../schemas/users/responseUser.schemas"
 const listUserProfileService = async (
   userId: string
 ): Promise<ReturnType<typeof responseCreateUserSchemas.parse>> => {
-  const userRepository = AppDataSource.getRepository(User);
-
-  const userResponse = await userRepository.findOne({
-    where: { id: userId },
-  });
-  console.log(userResponse);
+  const userResponse = await AppDataSource.createQueryBuilder()
+    .select("users")
+    .from(User, "users")
+    .leftJoinAndSelect("users.contacts", "contacts")
+    .where("users.id = :id", { id: userId })
+    .getOne();
 
   const data = responseCreateUserSchemas.parse(userResponse);
 
