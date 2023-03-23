@@ -7,7 +7,7 @@ const deleteUserServices = async (
   userId: string
 ): Promise<void> => {
   if (id !== userId) {
-    throw new AppError("Invalid access check past id!", 404);
+    throw new AppError("Invalid access check past id!", 401);
   }
   const userRepository = AppDataSource.getRepository(User);
 
@@ -17,7 +17,7 @@ const deleteUserServices = async (
   });
 
   if (!userResponse.length) {
-    throw new AppError("Deleting users is not allowed!", 404);
+    throw new AppError("Deleting users is not allowed!", 400);
   }
 
   if (!userResponse[0].isActive) {
