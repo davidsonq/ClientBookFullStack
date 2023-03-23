@@ -5,7 +5,7 @@
 - [User](#1-user)
 
   - [POST - /users](#11-criação-de-usuários)
-  - [GET - /users/profile](#12-listar-profile-usuário)
+  - [GET - /users/profile](#12-acesso-ao-perfil-do-usuário)
   - [PATCH - /users/:id](#13-atualizar-os-dados-do-usuário)
   - [DELETE - /users/:id](#14-deletando-usuário)
 
@@ -48,7 +48,7 @@ O objeto User é definido como:
 | PATCH  | /users/:id     | Atualização dos dados do usuário. |
 | DELETE | /users/:id     | Deleta o usuário passando o ID    |
 
-### 1.1 **Criação de Users**
+### 1.1 **Criação de usuários**
 
 [ Voltar para os Endpoints ](#1-endpoints)
 
