@@ -18,7 +18,7 @@ const updateContactsService = async (
     .execute();
 
   if (contact.affected === 0) {
-    throw new AppError("Invalid access check past id!", 404);
+    throw new AppError("Invalid access check past id!", 401);
   }
 
   const data = responseContactsSchemas.parse(contact.raw[0]);

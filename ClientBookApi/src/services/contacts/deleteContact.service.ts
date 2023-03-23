@@ -11,7 +11,7 @@ const deleteContactsService = async (userId: string, contactId: string) => {
     .execute();
 
   if (contact.affected === 0) {
-    throw new AppError("Invalid access check past id!", 404);
+    throw new AppError("Invalid access check past id!", 401);
   }
 };
 

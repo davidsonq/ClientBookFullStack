@@ -10,7 +10,7 @@ const updateUserService = async (
   tokenId: string
 ): Promise<ReturnType<typeof responseCreateUserSchemas.parse>> => {
   if (userId !== tokenId) {
-    throw new AppError("Invalid access check past id!", 404);
+    throw new AppError("Invalid access check past id!", 401);
   }
 
   const userRepository = AppDataSource.getRepository(User);
@@ -33,7 +33,7 @@ const updateUserService = async (
   });
 
   if (!userResponse.length) {
-    throw new AppError("Updating users is not allowed", 404);
+    throw new AppError("Updating users is not allowed", 401);
   }
 
   if (!Object.keys(newUpdateUser).length) {
