@@ -14,20 +14,22 @@ const verifyContactEmailMiddlewares = async (
   const contactsRepository: Repository<Contact> =
     AppDataSource.getRepository(Contact);
 
-  const existsEmail: boolean = await contactsRepository.exist({
-    where: { email: email },
-  });
+  if (email) {
+    const existsEmail: boolean = await contactsRepository.exist({
+      where: { email: email },
+    });
 
-  if (existsEmail) {
-    throw new AppError("Email already created", 409);
-  }
+    if (existsEmail) {
+      throw new AppError("Email already created", 409);
+    }
 
-  const existsEmailInSecondEmail: boolean = await contactsRepository.exist({
-    where: { secondEmail: email },
-  });
+    const existsEmailInSecondEmail: boolean = await contactsRepository.exist({
+      where: { secondEmail: email },
+    });
 
-  if (existsEmailInSecondEmail) {
-    throw new AppError("Email already created", 409);
+    if (existsEmailInSecondEmail) {
+      throw new AppError("Email already created", 409);
+    }
   }
 
   if (secondEmail) {
