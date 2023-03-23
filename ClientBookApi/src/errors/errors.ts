@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
 import AppError from "./appError.errors";
 
-const errorHandler = (
+const handleError = (
   err: Error,
   req: Request,
   res: Response,
@@ -17,8 +17,9 @@ const errorHandler = (
   }
 
   if (err instanceof ZodError) {
-    return res.status(400).json({ message: err.errors });
+    return res.status(400).json(err.flatten().fieldErrors);
   }
+
   if (err instanceof TypeError) {
     return res.status(403).json({ message: "Email or password not found!" });
   }
@@ -28,4 +29,4 @@ const errorHandler = (
   return res.status(500).json({ message: "Internal Server Error." });
 };
 
-export default errorHandler;
+export default handleError;
