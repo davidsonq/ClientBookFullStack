@@ -20,9 +20,14 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.37.0",
     "react-icons": "^4.8.0",
+    "styled-components": "^5.3.9",
     "sweetalert2": "^11.7.3",
     "sweetalert2-react-content": "^5.0.7",
     "typescript": "5.0.2",
     "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7"
   }
 }
