@@ -28,25 +28,19 @@ const formSchema = z
       .string()
       .max(50, "O e-mail está muito grande!")
       .trim()
-      .optional(),
+      .optional()
+      .transform((value) => (value === "" ? null : value)),
     secondPhone: z
       .string()
       .max(20, "Número de telefone muito grande!")
       .trim()
-      .optional(),
+      .optional()
+      .transform((value) => (value === "" ? null : value)),
     phone: z
       .string()
       .nonempty("Número de telefone obrigatório!")
       .max(20, "Número de telefone muito grande!")
       .trim(),
-  })
-  .transform((data) => {
-    if (data.secondEmail === "") {
-      delete data.secondEmail;
-    } else if (data.secondPhone === "") {
-      delete data.secondPhone;
-    }
-    return data;
   })
   .refine((data) => data.password === data.confirm, {
     message: "Confirmação de senha deve ser igual senha",

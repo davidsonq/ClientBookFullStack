@@ -88,7 +88,7 @@ export default function FormRegister() {
           {errors.secondPhone?.message || "Segundo telefone"}
         </label>
       </div>
-      <button type="submit">Entrar</button>
+      <button type="submit">Cadastrar</button>
       <span>
         Já possui conta? <Link href={"/"}>clique aqui!</Link>
       </span>

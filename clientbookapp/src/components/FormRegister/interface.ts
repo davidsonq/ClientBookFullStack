@@ -3,7 +3,7 @@ export interface iUserRegister {
   email: string;
   password: string;
   confirm: string;
-  secondEmail: string | null;
-  secondPhone: string | null;
+  secondEmail?: string | null;
+  secondPhone?: string | null;
   phone: string;
 }
