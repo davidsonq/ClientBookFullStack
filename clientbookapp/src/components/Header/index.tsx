@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import nookies from "nookies";
 
 export default function Header() {
-  const { user, setLogin } = useProvider();
+  const { user } = useProvider();
+  const router = useRouter();
 
   const handleLogout = () => {
     nookies.destroy(null, "ClientBookToken", { path: "/" });
-    setLogin(false);
+    router.push("/");
   };
 
   return (
@@ -15,7 +16,13 @@ export default function Header() {
       <div>
         <div>
           <h1>Client Book</h1>
-          <h4>{user?.name}</h4>
+          <h4>Cliente: {user?.name}</h4>
+          <p>E-mail: {user?.email}</p>
+          <p>Número de telefone: {user?.phone}</p>
+          {!!user?.secondEmail && (
+            <p> E-mail secundário: {user?.secondEmail}</p>
+          )}
+          {!!user?.secondPhone && <p>Telefone secundário{user?.secondPhone}</p>}
         </div>
         <button type="button" onClick={handleLogout}>
           Sair

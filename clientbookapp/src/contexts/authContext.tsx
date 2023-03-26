@@ -27,6 +27,7 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
   const [contactEdit, setContactEdit] = useState<iContactResponse>();
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [modal3, setModal3] = useState(false);
 
   const MySwal = withReactContent(Swal);
 
@@ -166,7 +167,28 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
     try {
       const response = await api.get<iContactResponse>(`/contacts/${id}`);
       setContactEdit({ ...response.data });
-      setModal2(true);
+    } catch (error) {
+      console.error(error);
+      ToastError.fire({
+        icon: "error",
+        iconColor: "#EC8697",
+        title: `Erro na solicitação!`,
+      });
+    }
+  };
+
+  const onSubmitFunctionContactDelete = async () => {
+    try {
+      await api.delete<iContactResponse>(`/contacts/${contactEdit?.id}`);
+      ToastSuccess.fire({
+        icon: "success",
+        title: `Contato deletado com sucesso!`,
+      });
+      const filterContacts = contacts.filter(
+        (contact) => contact.id !== contactEdit?.id
+      );
+      setContacts([...filterContacts]);
+      setModal3(false);
     } catch (error) {
       console.error(error);
       ToastError.fire({
@@ -188,12 +210,15 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
         onSubmitFunctionContact,
         onSubmitFunctionContactEdit,
         onSubmitFunctionContactGet,
+        onSubmitFunctionContactDelete,
         user,
         setLogin,
         setModal1,
         setModal2,
         modal2,
         modal1,
+        modal3,
+        setModal3,
         contacts,
         setContacts,
         contactEdit,

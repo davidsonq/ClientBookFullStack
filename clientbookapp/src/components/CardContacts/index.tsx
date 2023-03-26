@@ -9,7 +9,7 @@ export default function CardContact({
 }) {
   const { id, name, email, secondEmail, phone, secondPhone } = contact;
 
-  const { onSubmitFunctionContactGet } = useProvider();
+  const { onSubmitFunctionContactGet, setModal2, setModal3 } = useProvider();
   return (
     <li>
       <h3>{name}</h3>
@@ -21,11 +21,18 @@ export default function CardContact({
         type="button"
         onClick={() => {
           onSubmitFunctionContactGet(id);
+          setModal2(true);
         }}
       >
         <FiEdit />
       </button>
-      <button type="button" onClick={() => {}}>
+      <button
+        type="button"
+        onClick={() => {
+          onSubmitFunctionContactGet(id);
+          setModal3(true);
+        }}
+      >
         <FiTrash2 />
       </button>
     </li>

@@ -10,12 +10,15 @@ export interface iAuthProviderData {
   onSubmitFunctionContact: (userData: iContactCreate) => void;
   onSubmitFunctionContactEdit: (userData: iContactCreate) => void;
   onSubmitFunctionContactGet: (id: string) => void;
+  onSubmitFunctionContactDelete: () => void;
   user: iUserProps | undefined;
   setLogin: Dispatch<SetStateAction<boolean>>;
   setModal1: Dispatch<SetStateAction<boolean>>;
   modal1: boolean;
   setModal2: Dispatch<SetStateAction<boolean>>;
   modal2: boolean;
+  setModal3: Dispatch<SetStateAction<boolean>>;
+  modal3: boolean;
   setContacts: Dispatch<SetStateAction<iContactResponse[]>>;
   contacts: iContactResponse[] | [];
   setContactEdit: Dispatch<SetStateAction<iContactResponse | undefined>>;
