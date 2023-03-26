@@ -5,6 +5,7 @@ import ModalAddContacts from "@/components/ModalAddContacts";
 import ModalDelete from "@/components/ModalDelete";
 import ModalEditContact from "@/components/ModalEditContact";
 import { useProvider } from "@/contexts/authContext";
+import { ContatoS, MainS } from "./style";
 
 export default function Dashbord() {
   const { setModal1 } = useProvider();
@@ -12,7 +13,7 @@ export default function Dashbord() {
     <>
       <HeadComponent />
       <Header />
-      <main>
+      <MainS>
         <div>
           <button
             type="button"
@@ -23,21 +24,14 @@ export default function Dashbord() {
             Adicionar
           </button>
         </div>
-        <div>
+        <ContatoS>
           <h2>Contatos</h2>
-          <ul>
-            <li>Nome</li>
-            <li>E-mail</li>
-            <li>Segundo e-mail</li>
-            <li>Número de telefone</li>
-            <li>Segundo telefone</li>
-          </ul>
-        </div>
+        </ContatoS>
         <ListContacts />
         <ModalAddContacts />
         <ModalEditContact />
         <ModalDelete />
-      </main>
+      </MainS>
     </>
   );
 }

@@ -1,23 +1,24 @@
 import { useProvider } from "@/contexts/authContext";
 import { iContactResponse } from "@/contexts/interface";
 import CardContact from "../CardContacts";
+import { DivListS, UlS } from "./style";
 
 export default function ListContacts() {
   const { contacts } = useProvider();
   return (
     <>
       {!contacts.length ? (
-        <div>
+        <DivListS>
           <h2>Nenhum contato foi criado clique em adicionar!</h2>
-        </div>
+        </DivListS>
       ) : (
-        <div>
-          <ul>
+        <DivListS>
+          <UlS>
             {contacts.map((contact: iContactResponse) => (
               <CardContact key={contact.id} contact={contact} />
             ))}
-          </ul>
-        </div>
+          </UlS>
+        </DivListS>
       )}
     </>
   );

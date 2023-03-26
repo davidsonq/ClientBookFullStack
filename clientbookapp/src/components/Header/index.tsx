@@ -1,6 +1,7 @@
 import { useProvider } from "@/contexts/authContext";
 import { useRouter } from "next/router";
 import nookies from "nookies";
+import { HeaderS } from "./style";
 
 export default function Header() {
   const { user } = useProvider();
@@ -12,22 +13,35 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <HeaderS>
       <div>
         <div>
           <h1>Client Book</h1>
-          <h4>Cliente: {user?.name}</h4>
-          <p>E-mail: {user?.email}</p>
-          <p>Número de telefone: {user?.phone}</p>
+          <h4>
+            <strong>Cliente:</strong> {user?.name}
+          </h4>
+          <p>
+            <strong>E-mail: </strong> {user?.email}
+          </p>
+          <p>
+            <strong>Número de telefone:</strong> {user?.phone}
+          </p>
           {!!user?.secondEmail && (
-            <p> E-mail secundário: {user?.secondEmail}</p>
+            <p>
+              <strong>E-mail secundário: </strong> {user?.secondEmail}
+            </p>
           )}
-          {!!user?.secondPhone && <p>Telefone secundário{user?.secondPhone}</p>}
+          {!!user?.secondPhone && (
+            <p>
+              <strong>Telefone secundário: </strong>
+              {user?.secondPhone}
+            </p>
+          )}
         </div>
         <button type="button" onClick={handleLogout}>
           Sair
         </button>
       </div>
-    </header>
+    </HeaderS>
   );
 }

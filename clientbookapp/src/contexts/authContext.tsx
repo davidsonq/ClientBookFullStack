@@ -25,6 +25,7 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
   const [contacts, setContacts] = useState<iContactResponse[] | []>([]);
   const [login, setLogin] = useState(false);
   const [contactEdit, setContactEdit] = useState<iContactResponse>();
+  const [useEye, setUseEye] = useState("password");
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
@@ -211,6 +212,8 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
         onSubmitFunctionContactEdit,
         onSubmitFunctionContactGet,
         onSubmitFunctionContactDelete,
+        useEye,
+        setUseEye,
         user,
         setLogin,
         setModal1,

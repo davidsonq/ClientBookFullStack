@@ -11,6 +11,8 @@ export interface iAuthProviderData {
   onSubmitFunctionContactEdit: (userData: iContactCreate) => void;
   onSubmitFunctionContactGet: (id: string) => void;
   onSubmitFunctionContactDelete: () => void;
+  useEye: string;
+  setUseEye: Dispatch<SetStateAction<string>>;
   user: iUserProps | undefined;
   setLogin: Dispatch<SetStateAction<boolean>>;
   setModal1: Dispatch<SetStateAction<boolean>>;

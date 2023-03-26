@@ -12,11 +12,30 @@ export default function CardContact({
   const { onSubmitFunctionContactGet, setModal2, setModal3 } = useProvider();
   return (
     <li>
-      <h3>{name}</h3>
-      <p>{email}</p>
-      {!!secondEmail && <p>{secondEmail}</p>}
-      <p>{phone}</p>
-      {!!secondPhone && <p>{secondPhone}</p>}
+      <h3>
+        <strong>Nome:</strong>
+        {` ${name}`}
+      </h3>
+      <p>
+        <strong>E-mail: </strong>
+        {` ${email}`}
+      </p>
+      {!!secondEmail && (
+        <p>
+          <strong>E-mail secundário: </strong>
+          {secondEmail}
+        </p>
+      )}
+      <p>
+        <strong>Telefone: </strong>
+        {phone}
+      </p>
+      {!!secondPhone && (
+        <p>
+          <strong>Telefone secundário: </strong>
+          {secondPhone}
+        </p>
+      )}
       <button
         type="button"
         onClick={() => {

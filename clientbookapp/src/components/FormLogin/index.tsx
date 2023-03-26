@@ -6,9 +6,10 @@ import { useProvider } from "@/contexts/authContext";
 import Link from "next/link";
 import { InputStyle } from "@/styles/InputStyle";
 import { ButtonS } from "./style";
+import { ButtonEye } from "../ButtonEyes";
 
 export default function FormLogin() {
-  const { onSubmitFunctionLogin } = useProvider();
+  const { onSubmitFunctionLogin, useEye } = useProvider();
 
   const {
     register,
@@ -33,11 +34,12 @@ export default function FormLogin() {
       <InputStyle error={!!errors.password?.message}>
         <label htmlFor="password">{errors.password?.message || "Senha"}</label>
         <input
-          type="password"
+          type={useEye}
           id="password"
           placeholder="Digite aqui sua senha"
           {...register("password")}
         />
+        <ButtonEye />
       </InputStyle>
       <ButtonS type="submit">Entrar</ButtonS>
       <span>
