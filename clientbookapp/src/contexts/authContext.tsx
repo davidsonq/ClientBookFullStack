@@ -13,7 +13,7 @@ import {
   iLogin,
   iUserCreate,
 } from "./interface";
-import { iUserProps } from "@/pages/dashboard/interface";
+import { iUserProps } from "./interface";
 import { iUserRegister } from "@/components/FormRegister/interface";
 import { iContactCreate } from "@/components/ModalAddContacts/interface";
 
