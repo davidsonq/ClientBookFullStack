@@ -8,5 +8,5 @@ export interface iUserProps {
   isAdm: boolean;
   createdAt: string;
   updatedAt: string;
-  contact: [];
+  contacts: [];
 }
