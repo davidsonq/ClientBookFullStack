@@ -38,7 +38,7 @@ Em seguida, na mesma pasta, execute o seguinte comando no terminal:
 
 Documentação da API:
 
- - [Documentação](https://github.com/davidsonq/ClientBook/edit/main/ClientBookApi/README.md))
+ - [Documentação](https://github.com/davidsonq/ClientBook/edit/main/ClientBookApi/README.md)
  
  Caso queira testar no Insomnia, a API tem um JSON pronto. Basta baixar e importar para o Insomnia.
  
