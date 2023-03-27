@@ -31,8 +31,15 @@ Para instalar as dependências do projeto, acesse ClientBook/ClientBookApi e exe
 Em seguida, na mesma pasta, execute o seguinte comando no terminal:
 
 ```
-  yarn dev
+  yarn typeorm migration:run -d ./src/data-source.ts
 ```
+Isso irá rodar as migrações do projeto. Depois, use o seguinte comando no terminal:
+
+```
+yarn dev
+```
+Isso irá rodar a API.
+
 
 ## 5.Considerações
 
