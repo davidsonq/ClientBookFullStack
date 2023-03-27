@@ -1,7 +1,6 @@
 import { iUserLogin } from "@/components/FormLogin/interface";
 import { iUserRegister } from "@/components/FormRegister/interface";
 import { iContactCreate } from "@/components/ModalAddContacts/interface";
-import { iUserProps } from "@/pages/dashboard/interface";
 import { Dispatch, SetStateAction } from "react";
 
 export interface iAuthProviderData {
@@ -58,4 +57,17 @@ export interface iContactResponse {
   secondPhone: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface iUserProps {
+  id: string;
+  name: string;
+  email: string;
+  secondEmail: string | null;
+  phone: string;
+  secondPhone: string | null;
+  isAdm: boolean;
+  createdAt: string;
+  updatedAt: string;
+  contacts: [];
 }

@@ -5,7 +5,7 @@ import ModalAddContacts from "@/components/ModalAddContacts";
 import ModalDelete from "@/components/ModalDelete";
 import ModalEditContact from "@/components/ModalEditContact";
 import { useProvider } from "@/contexts/authContext";
-import { ContatoS, MainS } from "./style";
+import { ContatoS, MainS } from "../../styles/MainDash";
 
 export default function Dashbord() {
   const { setModal1 } = useProvider();
