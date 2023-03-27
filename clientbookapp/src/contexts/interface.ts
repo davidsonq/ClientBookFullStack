@@ -14,7 +14,7 @@ export interface iAuthProviderData {
   useEye: string;
   setUseEye: Dispatch<SetStateAction<string>>;
   user: iUserProps | undefined;
-  setLogin: Dispatch<SetStateAction<boolean>>;
+  setLogin: Dispatch<SetStateAction<string>>;
   setModal1: Dispatch<SetStateAction<boolean>>;
   modal1: boolean;
   setModal2: Dispatch<SetStateAction<boolean>>;
@@ -25,6 +25,8 @@ export interface iAuthProviderData {
   contacts: iContactResponse[] | [];
   setContactEdit: Dispatch<SetStateAction<iContactResponse | undefined>>;
   contactEdit: iContactResponse | undefined;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface iAuthContextProvider {

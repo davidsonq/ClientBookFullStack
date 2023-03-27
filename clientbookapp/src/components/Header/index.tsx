@@ -1,15 +1,13 @@
 import { useProvider } from "@/contexts/authContext";
-import { useRouter } from "next/router";
-import nookies from "nookies";
+import { destroyCookie } from "nookies";
 import { HeaderS } from "./style";
 
 export default function Header() {
-  const { user } = useProvider();
-  const router = useRouter();
+  const { user, setLogin } = useProvider();
 
   const handleLogout = () => {
-    nookies.destroy(null, "ClientBookToken", { path: "/" });
-    router.push("/");
+    destroyCookie(null, "ClientBookToken", { path: "/" });
+    setLogin("2");
   };
 
   return (

@@ -23,7 +23,8 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
   const router = useRouter();
   const [user, setUser] = useState<iUserProps>();
   const [contacts, setContacts] = useState<iContactResponse[] | []>([]);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState("");
+  const [loading, setLoading] = useState(false);
   const [contactEdit, setContactEdit] = useState<iContactResponse>();
   const [useEye, setUseEye] = useState("password");
   const [modal1, setModal1] = useState(false);
@@ -68,7 +69,7 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
         api.defaults.headers.common.authorization = `Bearer ${token.ClientBookToken}`;
 
         const { data } = await api.get<iUserProps>("/users/profile");
-
+        setLoading(false);
         setUser({ ...data });
         setContacts([...data.contacts]);
       } catch (error) {
@@ -83,15 +84,17 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
   };
 
   const onSubmitFunctionLogin = async (userData: iUserLogin) => {
+    setLoading(true);
+
     try {
       const response = await api.post<iLogin>("/login", userData);
 
       setCookie(null, "ClientBookToken", response.data.token, {
         maxAge: 43200,
-        path: "/",
       });
-      setLogin(true);
+      setLogin("1");
     } catch (error) {
+      setLoading(false);
       ToastError.fire({
         icon: "error",
         iconColor: "#EC8697",
@@ -226,6 +229,8 @@ export const AuthContextProvider = ({ children }: iAuthContextProvider) => {
         setContacts,
         contactEdit,
         setContactEdit,
+        loading,
+        setLoading,
       }}
     >
       {children}

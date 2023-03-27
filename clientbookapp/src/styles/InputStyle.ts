@@ -15,11 +15,11 @@ export const InputStyle = styled.div<iPropsStyle>`
     margin-top: 17px;
     outline: none;
     width: 100%;
-    height: 38.5px;
+    height: 37px;
     border-radius: 3px;
     padding: 0 13px;
     border: 1px solid ${(props) => (props.error ? "#E83F5B" : "#343B41")};
-    color: var(--color-grey-0);
+    color: var(--color-white);
     background-color: var(--color-grey-2);
     font-size: 0.813rem;
     font-weight: 400;
@@ -30,9 +30,9 @@ export const InputStyle = styled.div<iPropsStyle>`
     }
 
     &:focus {
-      border: 1.22px solid var(--color-grey-0);
+      border: 1.22px solid var(--color-white);
       &::placeholder {
-        color: var(--color-grey-0);
+        color: var(--color-white);
       }
     }
   }
@@ -46,7 +46,7 @@ export const InputStyle = styled.div<iPropsStyle>`
         font-size: 0.75rem;
       }
       input {
-        height: 48px;
+        height: 42px;
         &::placeholder {
           font-size: 1rem;
         }

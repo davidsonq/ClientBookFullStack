@@ -1,5 +1,7 @@
 import { useProvider } from "@/contexts/authContext";
 import { UseOutCLick } from "@/hook/UseOutClick";
+import { AsideS } from "../ModalAddContacts/style";
+import { DivS } from "./style";
 
 export default function ModalDelete() {
   const modalRef = UseOutCLick(() => setModal3(false));
@@ -7,7 +9,7 @@ export default function ModalDelete() {
   return (
     <>
       {modal3 && (
-        <aside>
+        <AsideS>
           <div ref={modalRef}>
             <div>
               <h3>Excluir Contato</h3>
@@ -19,8 +21,9 @@ export default function ModalDelete() {
                 X
               </button>
             </div>
-            <div>
+            <DivS>
               <h4>Deseja excluir contato?</h4>
+
               <button
                 type="button"
                 onClick={() => {
@@ -37,9 +40,9 @@ export default function ModalDelete() {
               >
                 Não
               </button>
-            </div>
+            </DivS>
           </div>
-        </aside>
+        </AsideS>
       )}
     </>
   );

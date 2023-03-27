@@ -1,9 +1,12 @@
 import { useProvider } from "@/contexts/authContext";
 import { UseOutCLick } from "@/hook/UseOutClick";
 import formSchema from "@/schemas/contacts";
+import { InputStyle } from "@/styles/InputStyle";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { ButtonS } from "../FormLogin/style";
 import { iContactCreate } from "./interface";
+import { AsideS } from "./style";
 
 export default function ModalAddContacts() {
   const modalRef = UseOutCLick(() => setModal1(false));
@@ -20,7 +23,7 @@ export default function ModalAddContacts() {
   return (
     <>
       {modal1 && (
-        <aside>
+        <AsideS>
           <div ref={modalRef}>
             <div>
               <h3>Adicionar Contato</h3>
@@ -33,63 +36,63 @@ export default function ModalAddContacts() {
               </button>
             </div>
             <form onSubmit={handleSubmit(onSubmitFunctionContact)}>
-              <div>
+              <InputStyle error={!!errors.email?.message}>
+                <label htmlFor="email">
+                  {errors.email?.message || "Email"}
+                </label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Digite aqui seu email"
                   {...register("email")}
                 />
-                <label htmlFor="email">
-                  {errors.email?.message || "Email"}
-                </label>
-              </div>
-              <div>
+              </InputStyle>
+              <InputStyle error={!!errors.name?.message}>
+                <label htmlFor="name">{errors.name?.message || "Nome"}</label>
                 <input
                   type="text"
                   id="name"
                   placeholder="Digite seu nome completo"
                   {...register("name")}
                 />
-                <label htmlFor="name">{errors.name?.message || "Nome"}</label>
-              </div>
-              <div>
+              </InputStyle>
+              <InputStyle error={!!errors.phone?.message}>
+                <label htmlFor="phone">
+                  {errors.phone?.message || "Telefone"}
+                </label>
                 <input
                   type="text"
                   id="phone"
                   placeholder="Digite seu número de telefone"
                   {...register("phone")}
                 />
-                <label htmlFor="phone">
-                  {errors.phone?.message || "Telefone"}
+              </InputStyle>
+              <InputStyle error={!!errors.secondEmail?.message}>
+                <label htmlFor="secondEmail">
+                  {errors.secondEmail?.message || "Segundo e-mail"}
                 </label>
-              </div>
-              <div>
                 <input
                   type="text"
                   id="secondEmail"
                   placeholder="Digite um segundo e-mail"
                   {...register("secondEmail")}
                 />
-                <label htmlFor="secondEmail">
-                  {errors.secondEmail?.message || "Segundo e-mail"}
+              </InputStyle>
+              <InputStyle error={!!errors.secondPhone?.message}>
+                <label htmlFor="secondPhone">
+                  {errors.secondPhone?.message || "Segundo telefone"}
                 </label>
-              </div>
-              <div>
                 <input
                   type="text"
                   id="secondPhone"
                   placeholder="Digite um segundo número de telefone"
                   {...register("secondPhone")}
                 />
-                <label htmlFor="secondPhone">
-                  {errors.secondPhone?.message || "Segundo telefone"}
-                </label>
-              </div>
-              <button type="submit">Cadastrar</button>
+              </InputStyle>
+              <ButtonS type="submit">Cadastrar</ButtonS>
             </form>
           </div>
-        </aside>
+        </AsideS>
       )}
     </>
   );

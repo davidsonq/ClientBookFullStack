@@ -7,9 +7,10 @@ import Link from "next/link";
 import { InputStyle } from "@/styles/InputStyle";
 import { ButtonS } from "./style";
 import { ButtonEye } from "../ButtonEyes";
+import Loading from "../Loading";
 
 export default function FormLogin() {
-  const { onSubmitFunctionLogin, useEye } = useProvider();
+  const { onSubmitFunctionLogin, useEye, loading } = useProvider();
 
   const {
     register,
@@ -41,7 +42,7 @@ export default function FormLogin() {
         />
         <ButtonEye />
       </InputStyle>
-      <ButtonS type="submit">Entrar</ButtonS>
+      <ButtonS type="submit">{loading ? <Loading /> : "Entrar"}</ButtonS>
       <span>
         Ainda não tem conta? <Link href={"/register"}>clique aqui!</Link>
       </span>

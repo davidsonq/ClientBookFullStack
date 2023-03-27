@@ -4,6 +4,9 @@ import formSchema from "@/schemas/editContacts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { iContactCreate } from "../ModalAddContacts/interface";
+import { InputStyle } from "@/styles/InputStyle";
+import { AsideS } from "../ModalAddContacts/style";
+import { ButtonS } from "../FormLogin/style";
 
 export default function ModalEditContact() {
   const modalRef = UseOutCLick(() => setModal2(false));
@@ -21,7 +24,7 @@ export default function ModalEditContact() {
   return (
     <>
       {modal2 && (
-        <aside>
+        <AsideS>
           <div ref={modalRef}>
             <div>
               <h3>Editar Contato</h3>
@@ -34,63 +37,63 @@ export default function ModalEditContact() {
               </button>
             </div>
             <form onSubmit={handleSubmit(onSubmitFunctionContactEdit)}>
-              <div>
+              <InputStyle error={!!errors.email?.message}>
+                <label htmlFor="email">
+                  {errors.email?.message || "Email"}
+                </label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Digite seu e-mail"
                   {...register("email")}
                 />
-                <label htmlFor="email">
-                  {errors.email?.message || "Email"}
-                </label>
-              </div>
-              <div>
+              </InputStyle>
+              <InputStyle error={!!errors.name?.message}>
+                <label htmlFor="name">{errors.name?.message || "Nome"}</label>
                 <input
                   type="text"
                   id="name"
                   placeholder="Digite seu nome completo"
                   {...register("name")}
                 />
-                <label htmlFor="name">{errors.name?.message || "Nome"}</label>
-              </div>
-              <div>
+              </InputStyle>
+              <InputStyle error={!!errors.phone?.message}>
+                <label htmlFor="phone">
+                  {errors.phone?.message || "Telefone"}
+                </label>
                 <input
                   type="text"
                   id="phone"
                   placeholder="Digite seu número de telefone"
                   {...register("phone")}
                 />
-                <label htmlFor="phone">
-                  {errors.phone?.message || "Telefone"}
+              </InputStyle>
+              <InputStyle error={!!errors.secondEmail?.message}>
+                <label htmlFor="secondEmail">
+                  {errors.secondEmail?.message || "Segundo e-mail"}
                 </label>
-              </div>
-              <div>
                 <input
                   type="text"
                   id="secondEmail"
                   placeholder="Digite um segundo e-mail"
                   {...register("secondEmail")}
                 />
-                <label htmlFor="secondEmail">
-                  {errors.secondEmail?.message || "Segundo e-mail"}
+              </InputStyle>
+              <InputStyle error={!!errors.secondPhone?.message}>
+                <label htmlFor="secondPhone">
+                  {errors.secondPhone?.message || "Segundo telefone"}
                 </label>
-              </div>
-              <div>
                 <input
                   type="text"
                   id="secondPhone"
                   placeholder="Digite um segundo número de telefone"
                   {...register("secondPhone")}
                 />
-                <label htmlFor="secondPhone">
-                  {errors.secondPhone?.message || "Segundo telefone"}
-                </label>
-              </div>
-              <button type="submit">Editar</button>
+              </InputStyle>
+              <ButtonS type="submit">Editar</ButtonS>
             </form>
           </div>
-        </aside>
+        </AsideS>
       )}
     </>
   );

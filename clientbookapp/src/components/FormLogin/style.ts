@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ButtonS = styled.button`
   cursor: pointer;
   width: 100%;
-  height: 38.5px;
+  height: 37px;
   background-color: var(--color-microHover);
   border: 1px solid var(--color-micro);
   color: #ffffff;
@@ -17,7 +17,7 @@ export const ButtonS = styled.button`
   margin-bottom: 13px;
   @media (min-width: 435px) {
     & {
-      height: 48px;
+      height: 42px;
       font-size: 1rem;
       transition: 0.5s;
     }
